@@ -52,6 +52,13 @@ SpatialHash.prototype.retrieve = function (point) {
             {x: point.x + halfWidth, y: point.y - halfHeight}, //TOP RIGHT
             {x: point.x + halfWidth, y: point.y + halfHeight} // BOTTOM RIGHT
         ];
+        // MIDDLE POINTS (less speed but more precise)
+        if (this.middle_points) {
+            box.push({x: point.x - halfWidth, y: point.y}); // MIDDLE LEFT
+            box.push({x: point.x + halfWidth, y: point.y}); // MIDDLE RIGHT
+            box.push({x: point.x, y: point.y - halfHeight}); // TOP RIGHT
+            box.push({x: point.x, y: point.y + halfHeight}); // BOTTOM RIGHT
+        }
     } else {
         box = [{x: point.x, y: point.y}];
     }
