@@ -17,7 +17,6 @@ function SpatialHash (config) {
     this.cell_size = config.cell_size || 50;
     this.middle_points = config.middle_points || false;
     this.buckets = {};
-    this.list = [];
 }
 
 /** @param point {x, y} */
@@ -40,10 +39,11 @@ SpatialHash.prototype.retrieve = function (point) {
     point.h = point.h || 0;
     var buckets = [],
         box, hash, bucket, doubleCmp = [],
-        halfWidth = point.w/ 2,
-        halfHeight = point.h/ 2;
+        halfWidth, halfHeight;
 
     if (point.w || point.h) {
+        halfWidth = point.w/ 2,
+        halfHeight = point.h/ 2;
         box = [
             {x: point.x, y: point.y},
             // BOX POINTS
