@@ -37,7 +37,7 @@ SpatialHash.prototype.insert = function (point) {
  *  }
  *  Retrieves buckets for the given point or for all 4 points of bounding box if width/heights are set
  */
-SpatialHash.prototype.retrieve1 = function (point) {
+SpatialHash.prototype.retrieve = function (point) {
     var x = point.x,
         y = point.y,
         w = point.w || 0,
@@ -77,7 +77,10 @@ SpatialHash.prototype.retrieve1 = function (point) {
 
 /** @param point {x, y} */
 SpatialHash.prototype._hash = function (point) {
-    return [int(point.x / this.cell_size),int(point.y / this.cell_size)].join('');
+    var cell = this.cell_size;
+    var hash = parseInt(point.x / cell, 10);
+    hash += parseInt(point.y / cell, 10);
+    return hash;
 };
 
 function int (value) {
