@@ -68,7 +68,7 @@ SpatialHash.prototype.retrieve = function (point) {
             doubleCmp.push(hash);
             bucket = this.buckets[hash];
             if (bucket) {
-                buckets.push(bucket);
+                buckets.concat(bucket);
             }
         }
     } 
@@ -81,6 +81,10 @@ SpatialHash.prototype._hash = function (point) {
     var hash = parseInt(point.x / cell, 10);
     hash += parseInt(point.y / cell, 10);
     return hash;
+};
+
+SpatialHash.prototype.clear = function () {
+    this.buckets = {};
 };
 
 function int (value) {
