@@ -78,7 +78,7 @@ SpatialHash.prototype.retrieve = function (point) {
 /** @param point {x, y} */
 SpatialHash.prototype._hash = function (point) {
     var cell = this.cell_size;
-    var hash = parseInt(point.x / cell, 10);
+    var hash = ''+parseInt(point.x / cell, 10);
     hash += parseInt(point.y / cell, 10);
     return hash;
 };
