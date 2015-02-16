@@ -44,9 +44,9 @@ SpatialHash.prototype.retrieve = function (point) {
         y = point.y,
         w = point.w || 0,
         h = point.h || 0,
-        buckets = [],
-        box, hash, bucket, doubleCmp = [],
-        halfWidth, halfHeight, len = 0;
+        objects = [],
+        box, hash, foundBucket, doubleCmp = [],
+        halfWidth, halfHeight, len = 0, fLen = 0;
     if (w || h) {
         halfWidth = w / 2;
         halfHeight = h / 2;
@@ -67,13 +67,16 @@ SpatialHash.prototype.retrieve = function (point) {
         // make sure there's no doubles
         if (doubleCmp.indexOf(hash) == -1) {
             doubleCmp.push(hash);
-            bucket = this.buckets[hash];
-            if (bucket) {
-                buckets = buckets.concat(bucket[0]);
+            foundBucket = this.buckets[hash];
+            fLen = foundBucket.length;
+            if (fLen) {
+                while(fLen--) {
+                    objects = objects.concat(foundBucket[fLen]);
+                }
             }
         }
     } 
-    return buckets;
+    return objects;
 };
 
 /** @param point {x, y} */
