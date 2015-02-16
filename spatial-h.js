@@ -17,7 +17,7 @@ function SpatialHash (config) {
     config = config || {};
     this.cell_size = config.cell_size || 50;
     // optimization to replace division by multiplication
-    this.reveser_cell_size = 1 / this.cell_size;
+    this.reverse_cell_size = 1 / this.cell_size;
     this.buckets = {};
 }
 
@@ -78,7 +78,7 @@ SpatialHash.prototype.retrieve = function (point) {
 
 /** @param point {x, y} */
 SpatialHash.prototype._hash = function (point) {
-    var cell = this.reveser_cell_size;
+    var cell = this.reverse_cell_size;
     var hash = ''+parseInt(point.x * cell, 10);
     hash += parseInt(point.y * cell, 10);
     return hash;
