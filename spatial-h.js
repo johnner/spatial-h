@@ -68,7 +68,7 @@ SpatialHash.prototype.retrieve = function (point) {
         if (doubleCmp.indexOf(hash) == -1) {
             doubleCmp.push(hash);
             foundBucket = this.buckets[hash];
-            fLen = foundBucket.length;
+            fLen = foundBucket && foundBucket.length;
             if (fLen) {
                 while(fLen--) {
                     objects = objects.concat(foundBucket[fLen]);
