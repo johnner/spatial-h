@@ -1,0 +1,31 @@
+{
+  "name": "spatial-h",
+  "version": "0.0.3",
+  "description": "Implemention of hierarchical hash grid data structure",
+  "main": "spatial-h.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnner/spatial-h.git"
+  },
+  "keywords": [
+    "spatial",
+    "hash"
+  ],
+  "author": "Johnner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnner/spatial-h/issues"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
+  }
+}
