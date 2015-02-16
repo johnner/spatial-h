@@ -46,10 +46,9 @@ SpatialHash.prototype.retrieve = function (point) {
         h = point.h || 0,
         buckets = [],
         box, hash, bucket, doubleCmp = [],
-        halfWidth, halfHeight,
-        len = 0;
+        halfWidth, halfHeight, len = 0;
     if (w || h) {
-        halfWidth = w / 2,
+        halfWidth = w / 2;
         halfHeight = h / 2;
         box = [
             {x: x, y: y},
