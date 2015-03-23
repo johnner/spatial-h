@@ -42,4 +42,12 @@ describe('retrieve', function () {
         expect(objects.length).toBeDefined();
         expect(objects.length === 0).toBeTruthy();
     });
+
+    it("should remove object by id", function () {
+        var object1 = {id: 111, x: 10, y: 10};
+        spatial.insert(object1);
+        spatial.remove(111);
+        var objects = spatial.retrieve({x: 10, y: 10});
+        expect(objects.length === 0).toBeTruthy();
+    })
 });

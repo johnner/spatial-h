@@ -5,6 +5,8 @@
  *
  * Make sure that cell_size is equal or bigger than retrieving box
  */
+'use strict';
+
 (function (w) {
 /**
  *
@@ -21,7 +23,10 @@ function SpatialHash (config) {
     this.buckets = {};
 }
 
-/** @param point {x, y} */
+/** 
+ * Point object must have "id" option if object removing is implied
+ * @param point {x, y} 
+ */
 SpatialHash.prototype.insert = function (point) {
     var hash = this._hash(point);
     var buckets = this.buckets;
@@ -89,6 +94,21 @@ SpatialHash.prototype._hash = function (point) {
 
 SpatialHash.prototype.clear = function () {
     this.buckets = {};
+};
+
+SpatialHash.prototype.remove = function (id) {
+    var list = [];
+    for (var bucket in this.buckets) {
+        if (this.buckets.hasOwnProperty(bucket)) {
+            list = this.buckets[bucket];
+            var len = list.length;
+            while (len --) {
+                if (list[len].id == id) {
+                    list.splice(len, 1);
+                }
+            }
+        }
+    }
 };
 
 function int (value) {
