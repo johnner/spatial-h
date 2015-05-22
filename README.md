@@ -1,5 +1,6 @@
 # spatial-h
-Spatial Hash implementation for 2-dimensional points
+Spatial Hash implementation for 2-dimensional points.
+Create buckets by (X,Y) coordinates of the hashed objects
 
 Algorithm is great for many uniform (equal size and shape) objects.
 
